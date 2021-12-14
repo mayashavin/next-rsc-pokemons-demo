@@ -42,11 +42,11 @@ export default function Pokemon({
             style={{
               cursor: 'pointer',
               marginRight: 5,
-              color: favorite ? '#ffa52a' : '#ccc',
+              color: favorite ? 'rgb(243 99 124)' : '#ccc',
             }}
             onClick={() => setFavorite(!favorite)}
           >
-            &#9650;
+            &#10084;
           </span>
           <span>{name}</span>        
         </h2>

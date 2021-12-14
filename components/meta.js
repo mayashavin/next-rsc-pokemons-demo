@@ -21,6 +21,7 @@ export default function Meta() {
 
       h2 {
         margin: 0.83em 0;
+        font-size: 18px;
       }
 
       h3 {
@@ -183,6 +184,7 @@ export default function Meta() {
       }
       .item--name {
         text-transform: capitalize;
+        display: flex;
       }
       .item--avatar-info {
         z-index: 1;
