@@ -2,7 +2,7 @@
 
 This is the demo of Hacker News built with Next.js and React Server Components. Read our announcement here: [Next.js 12](https://nextjs.org/blog/next-12).
 
-**Try the demo: https://next-news-rsc.vercel.sh**
+**Try the demo: https://next-rsc-pokemons-demo.vercel.app/**
 
 ### Development
 
