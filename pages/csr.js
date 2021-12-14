@@ -4,33 +4,32 @@ import { Suspense } from "react";
 import Spinner from "../components/spinner";
 
 // Client Components
+import Pokemon from "../components/pokemon.client";
 import Page from "../components/page.client";
-import Story from "../components/story.client";
 
 // Utils
-import fetchData from "../lib/fetch-data";
-import { transform } from "../lib/get-item";
 import useData from "../lib/use-data";
+import { getPokemon, getPokemons } from "../lib/get-pokemons";
 
-function StoryWithData({ id }) {
-  const data = useData(`s-${id}`, () =>
-    fetchData(`item/${id}`).then(transform)
-  );
-  return <Story {...data} />;
+function PokemonWithData({ id }) {
+  const data = useData(`p-${id}`, () => getPokemon(id));
+
+  return <Pokemon {...data} />;
 }
 
-function NewsWithData() {
-  const storyIds = useData("top", () => fetchData("topstories"));
+function ListWithData() {
+  const pokemons = useData('pokemons', () => getPokemons());
+
   return (
-    <>
-      {storyIds.slice(0, 30).map((id) => {
+    <div className='pokemon-gallery'>
+      {pokemons.slice(0, 30).map(({ id }) => {
         return (
           <Suspense key={id} fallback={<Spinner />}>
-            <StoryWithData id={id} />
+            <PokemonWithData id={id} key={id} />
           </Suspense>
         );
       })}
-    </>
+    </div>
   );
 }
 
@@ -41,7 +40,7 @@ export default function News() {
         <Spinner />
       ) : (
         <Suspense fallback={<Spinner />}>
-          <NewsWithData />
+          <ListWithData />
         </Suspense>
       )}
     </Page>

@@ -39,8 +39,8 @@ export default function Page() {
         <p>
           <small>
             Check out the code:{" "}
-            <a href="https://github.com/vercel/next-rsc-demo" target="_blank">
-              https://github.com/vercel/next-rsc-demo
+            <a href="https://github.com/mayashavin/next-rsc-pokemons-demo" target="_blank">
+              https://github.com/mayashavin/next-rsc-pokemons-demo
             </a>
           </small>
         </p>

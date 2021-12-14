@@ -1,22 +1,21 @@
 import Page from '../components/page.client'
-import Story from '../components/story.client'
+import Pokemon from '../components/pokemon.client'
 import Footer from '../components/footer.client'
 
 // Utils
-import fetchData from '../lib/fetch-data'
-import { transform } from '../lib/get-item'
+import { getPokemon, getPokemons } from '../lib/get-pokemons'
 
 export async function getServerSideProps() {
-  const storyIds = await fetchData('topstories', 500)
+  const storyIds = await getPokemons({ limit: 500, offset: 0 })
   const data = await Promise.all(
     storyIds
       .slice(0, 30)
-      .map((id) => fetchData(`item/${id}`).then(transform))
+      .map(({ id }) => getPokemon(id))
   )
 
   return {
     props: {
-      data,
+      data: JSON.parse(JSON.stringify(data)),
     },
   }
 }
@@ -24,9 +23,11 @@ export async function getServerSideProps() {
 export default function News({ data }) {
   return (
     <Page>
-      {data.map((item, i) => {
-        return <Story key={i} {...item} />
-      })}
+      <div className='pokemon-gallery'>
+        {data.map((item, i) => {
+          return <Pokemon key={i} {...item} />
+        })}
+      </div>
       <Footer />
     </Page>
   )
