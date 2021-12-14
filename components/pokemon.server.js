@@ -38,7 +38,7 @@ export default function Pokemon({
         <h2 className="item--name">{name}
         </h2>
         <div className="item--decription-types">
-          {types.map(({ name}) => <div className='chip sm'>{name}</div>)}
+          {types.map(({ name}) => <div className='chip sm' key={name}>{name}</div>)}
         </div>
       </div>
       <div className="item--avatar-info">
