@@ -5,11 +5,11 @@ import Skeletons from '../components/skeletons'
 
 // Server Components
 import SystemInfo from '../components/server-info.server'
+import Pokemon from "../components/pokemon.server";
 
 // Client Components
 import Page from '../components/page.client'
 import Footer from '../components/footer.client'
-import Pokemon from "../components/pokemon.client";
 
 // Utils
 import useData from '../lib/use-data'
